@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Адаптивный веб-сайт | Студенческий проект Белова Романа</title>
+    <!-- Подключите свои шрифты из fonts.txt здесь -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Пример шрифтов (замените на свои из fonts.txt) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Шапка с видео -->
+    <header class="header">
+      <div class="video-background">
+        <video autoplay muted loop playsinline id="bg-video">
+          <source src="video.mp4" type="video/mp4" />
+          Ваш браузер не поддерживает видео.
+        </video>
+        <div class="video-overlay"></div>
+      </div>
+
+      <!-- Навигация -->
+      <nav class="navbar">
+        <div class="container nav-container">
+          <a href="#" class="logo">WebSite</a>
+
+          <!-- Десктопное меню -->
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="#hero" class="nav-link">Главная</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a href="#services" class="nav-link"
+                >Услуги <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="dropdown-menu">
+                <!-- Все ссылки ведут на одну секцию #services -->
+                <li><a href="#services">Веб-разработка</a></li>
+                <li><a href="#services">Дизайн</a></li>
+                <li><a href="#services">SEO</a></li>
+                <li><a href="#services">Консультации</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="nav-link">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a href="#portfolio" class="nav-link">Портфолио</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact" class="nav-link">Контакты</a>
+            </li>
+          </ul>
+
+          <!-- Мобильное меню и кнопка -->
+          <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Мобильное меню (скрыто по умолчанию) -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav">
+          <li><a href="#" class="mobile-link">Главная</a></li>
+          <li class="mobile-dropdown">
+            <a href="#services" class="mobile-link"
+              >Услуги <i class="fas fa-chevron-down"></i
+            ></a>
+            <ul class="mobile-submenu">
+              <!-- Все ссылки ведут на одну секцию #services -->
+              <li><a href="#services">Веб-разработка</a></li>
+              <li><a href="#services">Дизайн</a></li>
+              <li><a href="#services">SEO</a></li>
+              <li><a href="#services">Консультации</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="mobile-link">О нас</a></li>
+          <li><a href="#" class="mobile-link">Портфолио</a></li>
+          <li><a href="#" class="mobile-link">Контакты</a></li>
+        </ul>
+      </div>
+
+      <!-- Герой-секция -->
+      <div class="hero" id="hero">
+        <div class="container">
+          <h1 class="hero-title">Создаем современные веб-решения</h1>
+          <p class="hero-subtitle">
+            Адаптивные, быстрые и эффективные сайты для вашего бизнеса
+          </p>
+          <a href="#contact" class="btn hero-btn">Начать проект</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Секция о нас -->
+      <section class="section about" id="about">
+        <div class="container">
+          <h2 class="section-title">О нашей компании</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>
+                Мы - команда профессионалов, специализирующаяся на создании
+                современных веб-решений. Наш подход сочетает в себе креативный
+                дизайн, передовые технологии и глубокое понимание потребностей
+                клиентов.
+              </p>
+              <p>
+                С каждым проектом мы стремимся не только соответствовать
+                ожиданиям, но и превосходить их, создавая продукты, которые
+                действительно работают на результат.
+              </p>
+            </div>
+            <div class="about-image">
+              <img src="/assets/images/img1.jpg" alt="Наша команда" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Слайдер -->
+      <section class="section slider-section" id="portfolio">
+        <div class="container">
+          <h2 class="section-title">Наши проекты</h2>
+          <div class="slider-container">
+            <div class="slider">
+              <div class="slider-item active">
+                <div class="slider-content">
+                  <h3>Корпоративный сайт</h3>
+                  <p>Современный дизайн с адаптивной версткой</p>
+                </div>
+                <img src="/assets/images/img2.png" alt="Проект 1" />
+              </div>
+              <div class="slider-item">
+                <div class="slider-content">
+                  <h3>Интернет-магазин</h3>
+                  <p>Полный цикл разработки с интеграцией платежей</p>
+                </div>
+                <img src="/assets/images/img3.png" alt="Проект 2" />
+              </div>
+              <div class="slider-item">
+                <div class="slider-content">
+                  <h3>Мобильное приложение</h3>
+                  <p>Кроссплатформенное решение для iOS и Android</p>
+                </div>
+                <img src="/assets/images/img4.jpg" alt="Проект 3" />
+              </div>
+            </div>
+            <button class="slider-btn prev-btn" aria-label="Предыдущий слайд">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next-btn" aria-label="Следующий слайд">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="slider-dots">
+              <span class="dot active" data-slide="0"></span>
+              <span class="dot" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section services"
+        id="services"
+        style="padding: 60px 0; display: none"
+      >
+        <div class="container">
+          <h2 class="section-title">Наши услуги</h2>
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>Веб-разработка</h3>
+              <p>Создание современных сайтов и веб-приложений.</p>
+            </div>
+            <div class="service-card">
+              <h3>Дизайн</h3>
+              <p>Уникальный дизайн для вашего проекта.</p>
+            </div>
+            <div class="service-card">
+              <h3>SEO</h3>
+              <p>Продвижение сайтов в поисковых системах.</p>
+            </div>
+            <div class="service-card">
+              <h3>Консультации</h3>
+              <p>Профессиональные консультации по разработке.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Форма -->
+      <section class="section contact" id="contact">
+        <div class="container">
+          <h2 class="section-title">Свяжитесь с нами</h2>
+          <p class="section-subtitle">
+            Заполните форму ниже, и мы свяжемся с вами в ближайшее время
+          </p>
+
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Имя *</label>
+                <input type="text" id="name" name="name" required />
+                <span class="error-message" id="nameError"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required />
+                <span class="error-message" id="emailError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Телефон</label>
+              <input type="number" id="phone" name="phone" />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Услуга</label>
+              <select id="service" name="service">
+                <option value="">Выберите услугу</option>
+                <option value="web">Веб-разработка</option>
+                <option value="design">Дизайн</option>
+                <option value="seo">SEO-оптимизация</option>
+                <option value="consulting">Консультация</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Сообщение *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+              <span class="error-message" id="messageError"></span>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="agreement" name="agreement" required />
+              <label for="agreement"
+                >Я согласен на обработку персональных данных *</label
+              >
+              <span class="error-message" id="agreementError"></span>
+            </div>
+
+            <button type="submit" class="btn submit-btn" id="submitBtn">
+              <span>Отправить сообщение</span>
+              <div class="spinner hidden" id="spinner"></div>
+            </button>
+
+            <div class="form-message" id="formMessage"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <a href="#" class="footer-logo">WebSite</a>
+            <p>Создаем современные веб-решения с 2025 года</p>
+          </div>
+          <div class="footer-links">
+            <h3>Быстрые ссылки</h3>
+            <ul>
+              <li><a href="#hero">Главная</a></li>
+              <li><a href="#services">Услуги</a></li>
+              <li><a href="#about">О нас</a></li>
+              <li><a href="#portfolio">Портфолио</a></li>
+              <li><a href="#contact">Контакты</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-envelope"></i> romanbelov8913@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +7 (908) 950 33 77</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Веб-сайт. Все права защищены.</p>
+          <p>Студенческий проект Белова Романа</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
