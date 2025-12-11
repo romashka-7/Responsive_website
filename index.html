@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Адаптивный веб-сайт | Студенческий проект Белова Романа</title>
-    <!-- Подключите свои шрифты из fonts.txt здесь -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Пример шрифтов (замените на свои из fonts.txt) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
@@ -19,7 +17,6 @@
     />
   </head>
   <body>
-    <!-- Шапка с видео -->
     <header class="header">
       <div class="video-background">
         <video autoplay muted loop playsinline id="bg-video">
@@ -29,12 +26,10 @@
         <div class="video-overlay"></div>
       </div>
 
-      <!-- Навигация -->
       <nav class="navbar">
         <div class="container nav-container">
           <a href="#" class="logo">WebSite</a>
 
-          <!-- Десктопное меню -->
           <ul class="nav-menu">
             <li class="nav-item">
               <a href="#hero" class="nav-link">Главная</a>
@@ -44,7 +39,6 @@
                 >Услуги <i class="fas fa-chevron-down"></i
               ></a>
               <ul class="dropdown-menu">
-                <!-- Все ссылки ведут на одну секцию #services -->
                 <li><a href="#services">Веб-разработка</a></li>
                 <li><a href="#services">Дизайн</a></li>
                 <li><a href="#services">SEO</a></li>
@@ -61,8 +55,6 @@
               <a href="#contact" class="nav-link">Контакты</a>
             </li>
           </ul>
-
-          <!-- Мобильное меню и кнопка -->
           <div class="hamburger" id="hamburger">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -71,7 +63,6 @@
         </div>
       </nav>
 
-      <!-- Мобильное меню (скрыто по умолчанию) -->
       <div class="mobile-menu" id="mobileMenu">
         <ul class="mobile-nav">
           <li><a href="#" class="mobile-link">Главная</a></li>
@@ -80,7 +71,6 @@
               >Услуги <i class="fas fa-chevron-down"></i
             ></a>
             <ul class="mobile-submenu">
-              <!-- Все ссылки ведут на одну секцию #services -->
               <li><a href="#services">Веб-разработка</a></li>
               <li><a href="#services">Дизайн</a></li>
               <li><a href="#services">SEO</a></li>
@@ -93,7 +83,6 @@
         </ul>
       </div>
 
-      <!-- Герой-секция -->
       <div class="hero" id="hero">
         <div class="container">
           <h1 class="hero-title">Создаем современные веб-решения</h1>
@@ -106,7 +95,6 @@
     </header>
 
     <main>
-      <!-- Секция о нас -->
       <section class="section about" id="about">
         <div class="container">
           <h2 class="section-title">О нашей компании</h2>
@@ -209,7 +197,12 @@
             Заполните форму ниже, и мы свяжемся с вами в ближайшее время
           </p>
 
-          <form id="contactForm" class="contact-form">
+          <form
+            id="contactForm"
+            class="contact-form"
+            method="POST"
+            action="https://formcarry.com/s/nzFxBuBcpx9"
+          >
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Имя *</label>

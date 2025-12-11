@@ -127,20 +127,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Валидация формы
   function validateForm() {
     let isValid = true;
-
-    // Сброс сообщений об ошибках
     document.querySelectorAll(".error-message").forEach((el) => {
       el.textContent = "";
     });
 
-    // Проверка имени
     const name = document.getElementById("name");
     if (!name.value.trim()) {
       document.getElementById("nameError").textContent = "Введите имя";
       isValid = false;
     }
 
-    // Проверка email
     const email = document.getElementById("email");
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email.value.trim()) {
@@ -152,14 +148,12 @@ document.addEventListener("DOMContentLoaded", function () {
       isValid = false;
     }
 
-    // Проверка сообщения
     const message = document.getElementById("message");
     if (!message.value.trim()) {
       document.getElementById("messageError").textContent = "Введите сообщение";
       isValid = false;
     }
 
-    // Проверка согласия
     const agreement = document.getElementById("agreement");
     if (!agreement.checked) {
       document.getElementById("agreementError").textContent =
@@ -170,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return isValid;
   }
 
-  // Обработка отправки формы
+  // Обработка отправки формы - REAL FORM CARRY
   if (contactForm) {
     contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -182,47 +176,72 @@ document.addEventListener("DOMContentLoaded", function () {
       // Показываем спиннер
       submitBtn.disabled = true;
       spinner.classList.remove("hidden");
-
-      // Собираем данные формы
-      const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData);
+      formMessage.textContent = "";
+      formMessage.className = "form-message";
 
       try {
-        const response = await fetch("https://formspree.io/f/nzFxBuBcpx9", {
+        // Собираем данные формы
+        const formData = new FormData(contactForm);
+
+        // Отправка на Formcarry
+        // ЗАМЕНИТЕ "nzFxBuBcpx9" НА ВАШ НАСТОЯЩИЙ FORM ID!
+        const response = await fetch("https://formcarry.com/s/nzFxBuBcpx9", {
           method: "POST",
+          body: formData,
           headers: {
-            "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify(data),
         });
 
-        if (response.ok) {
+        console.log("Response status:", response.status);
+
+        const result = await response.json();
+        console.log("Response data:", result);
+
+        if (response.status === 200) {
           // Успешная отправка
           formMessage.textContent =
-            "Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.";
+            "✅ Сообщение успешно отправлено! Мы свяжемся с вами.";
           formMessage.className = "form-message success";
 
           // Очистка формы
           contactForm.reset();
         } else {
-          throw new Error("Ошибка отправки формы");
+          // Ошибка от Formcarry
+          const errorMsg = result.message || result.error || "Ошибка отправки";
+          throw new Error(errorMsg);
         }
       } catch (error) {
-        console.error("Ошибка:", error);
-        formMessage.textContent =
-          "Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.";
+        console.error("Ошибка отправки:", error);
+
+        // Показываем понятную ошибку
+        let userMessage = "❌ Произошла ошибка при отправке. ";
+
+        if (
+          error.message.includes("not found") ||
+          error.message.includes("404")
+        ) {
+          userMessage += "Неверный ID формы. Проверьте Formcarry настройки.";
+        } else if (error.message.includes("rate limit")) {
+          userMessage += "Слишком много запросов. Попробуйте позже.";
+        } else if (error.message.includes("email")) {
+          userMessage += "Проблема с email адресом.";
+        } else {
+          userMessage += "Пожалуйста, попробуйте еще раз.";
+        }
+
+        formMessage.textContent = userMessage;
         formMessage.className = "form-message error";
       } finally {
         // Скрываем спиннер
         submitBtn.disabled = false;
         spinner.classList.add("hidden");
 
-        // Скрываем сообщение через 5 секунд
+        // Скрываем сообщение через 8 секунд
         setTimeout(() => {
           formMessage.textContent = "";
           formMessage.className = "form-message";
-        }, 5000);
+        }, 8000);
       }
     });
   }
